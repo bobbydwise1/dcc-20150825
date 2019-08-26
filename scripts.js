@@ -35,8 +35,15 @@ console.log(findInversion(test2))
 console.log(findInversion(test3))
 
 $(document).ready(function() {
-  $('#button1').click(function(){
-    value1 = $('#input1-section-1').value();
-    $('#output-section-0').text(1)
+  let value1;
+  let value2;
+  $('#form1').submit(function(event){
+    event.preventDefault()
+    value1 = $('#input-section-0').val();
+    console.log(value1)
+    value1.replace(/'/g,'"')
+    console.log(value1)
+    value2 = JSON.parse(value1)
+    $('#output-section-0').text(findInversion(value2))
   })
 });
