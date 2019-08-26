@@ -12,11 +12,31 @@ You may assume each element in the array is distinct.
 For example, a sorted list has zero inversions. The array [2, 4, 1, 3, 5] has three inversions: (2, 1), (4, 1), and (4, 3). The array [5, 4, 3, 2, 1] has ten inversions: every distinct pair forms an inversion.
 */
 
+const findInversion = (yourArray) => {
+  let count = 0;
+  let temp;
+  for (i=0; i<yourArray.length-1; i++) {
+    temp = yourArray.slice(i+1);
+    for (j=0; j<temp.length; j++) {
+      if (yourArray[i] > temp[j]) {
+        count++;
+      }
+    }
+  }
+  return count;
+}
 
+let test1 = [1,2,3,4,5] //0 inversions
+let test2 = [2,4,1,3,5] //3 inversions
+let test3 = [5,4,3,2,1] //10 inversions
+
+console.log(findInversion(test1))
+console.log(findInversion(test2))
+console.log(findInversion(test3))
 
 $(document).ready(function() {
-  // $('#button1').click(function(){
-  //   value1 = $('#input1-section-1').value();
-  //   $('#output-section-0').text(1)
+  $('#button1').click(function(){
+    value1 = $('#input1-section-1').value();
+    $('#output-section-0').text(1)
   })
 });
